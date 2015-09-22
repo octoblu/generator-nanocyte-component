@@ -8,7 +8,7 @@ yeoman = require 'yeoman-generator'
 
 extractGeneratorName = (_, appname) ->
   slugged = _.slugify appname
-  match = slugged.match /^generator-(.+)/
+  match = slugged.match /^nanocyte-component-(.+)/
   return match[1].toLowerCase() if match and match.length is 2
   slugged
 
@@ -29,22 +29,22 @@ class NanocyteComponentGenerator extends yeoman.generators.Base
     console.log @yeoman
 
     done = @async()
-    generatorName = extractGeneratorName @_, @appname
+    componentName = extractGeneratorName @_, @appname
 
     prompts = [
       name: 'githubUser'
-      message: 'Would you mind telling me your username on GitHub?'
-      default: 'someuser'
+      message: 'Would you mind telling me your organization/username on GitHub?'
+      default: 'octoblu'
     ,
-      name: 'generatorName'
-      message: 'What\'s the base name of your generator?'
-      default: generatorName
+      name: 'componentName'
+      message: 'What\'s the base name of your component? (We\'ll add the "nanocyte-component-")'
+      default: componentName
     ]
 
     @prompt prompts, (props) =>
       @githubUser = props.githubUser
-      @generatorName = props.generatorName
-      @appname = 'generator-' + @generatorName
+      @componentName = props.componentName
+      @appname = 'nanocyte-component-' + @componentName
       done()
 
   userInfo: ->
@@ -61,6 +61,11 @@ class NanocyteComponentGenerator extends yeoman.generators.Base
   projectfiles: ->
     @template '_package.json', 'package.json'
     @template '_travis.yml', '.travis.yml'
+    @template '_index.js', 'index.js'
+    @template '_component.coffee', "src/#{@_.slugify @componentName}.coffee"
+    @template '_component-spec.coffee', "test/#{@_.slugify @componentName}-spec.coffee"
+    @template '_mocha.opts', "test/mocha.opts"
+    @template '_test_helper.coffee', "test/test_helper.coffee"
     @template 'README.md'
     @template 'LICENSE'
 
