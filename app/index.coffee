@@ -66,7 +66,7 @@ class NanocyteComponentGenerator extends yeoman.generators.Base
     @template '_component-spec.coffee', "test/#{@_.slugify @componentName}-spec.coffee"
     @template '_mocha.opts', "test/mocha.opts"
     @template '_test_helper.coffee', "test/test_helper.coffee"
-    @template 'README.md'
+    @template '_README.md', 'README.md'
     @template 'LICENSE'
 
   gitfiles: ->
