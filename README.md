@@ -1,8 +1,8 @@
 # generator-nanocyte-component
 
-[![Dependency status](http://img.shields.io/david/sqrtofsaturn/generator-nanocyte-component.svg?style=flat)](https://david-dm.org/sqrtofsaturn/generator-nanocyte-component)
-[![devDependency Status](http://img.shields.io/david/dev/sqrtofsaturn/generator-nanocyte-component.svg?style=flat)](https://david-dm.org/sqrtofsaturn/generator-nanocyte-component#info=devDependencies)
-[![Build Status](http://img.shields.io/travis/sqrtofsaturn/generator-nanocyte-component.svg?style=flat&branch=master)](https://travis-ci.org/sqrtofsaturn/generator-nanocyte-component)
+[![Dependency status](http://img.shields.io/david/octoblu/generator-nanocyte-component.svg?style=flat)](https://david-dm.org/octoblu/generator-nanocyte-component)
+[![devDependency Status](http://img.shields.io/david/dev/octoblu/generator-nanocyte-component.svg?style=flat)](https://david-dm.org/octoblu/generator-nanocyte-component#info=devDependencies)
+[![Build Status](http://img.shields.io/travis/octoblu/generator-nanocyte-component.svg?style=flat&branch=master)](https://travis-ci.org/octoblu/generator-nanocyte-component)
 
 [![NPM](https://nodei.co/npm/generator-nanocyte-component.svg?style=flat)](https://npmjs.org/package/generator-nanocyte-component)
 
@@ -51,7 +51,7 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 The MIT License (MIT)
 
-Copyright 2015 
+Copyright 2015 Octoblu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

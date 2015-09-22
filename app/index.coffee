@@ -7,7 +7,10 @@ GitHubApi = require 'github'
 yeoman = require 'yeoman-generator'
 
 extractGeneratorName = (_, appname) ->
-  _.slugify appname
+  slugged = _.slugify appname
+  match = slugged.match /^generator-(.+)/
+  return match[1].toLowerCase() if match and match.length is 2
+  slugged
 
 githubUserInfo = (name, cb) ->
   github = new GitHubApi version: '3.0.0'
@@ -16,6 +19,7 @@ githubUserInfo = (name, cb) ->
 class NanocyteComponentGenerator extends yeoman.generators.Base
   constructor: (args, options, config) ->
     super
+    @currentYear = (new Date()).getFullYear()
     {@realname, @githubUrl} = options
     @on 'end', => @installDependencies skipInstall: options['skip-install']
     @pkg = JSON.parse @readFileAsString path.join __dirname, '../package.json'
@@ -25,22 +29,22 @@ class NanocyteComponentGenerator extends yeoman.generators.Base
     console.log @yeoman
 
     done = @async()
-    componentName = extractGeneratorName @_, @appname
+    generatorName = extractGeneratorName @_, @appname
 
     prompts = [
       name: 'githubUser'
-      message: 'Would you mind telling me the organization name on GitHub?'
-      default: 'octoblu'
+      message: 'Would you mind telling me your username on GitHub?'
+      default: 'someuser'
     ,
-      name: 'componentName'
-      message: 'What\'s the base name of your component? (We\'ll add the nanocyte-component)'
-      default: componentName
+      name: 'generatorName'
+      message: 'What\'s the base name of your generator?'
+      default: generatorName
     ]
 
     @prompt prompts, (props) =>
       @githubUser = props.githubUser
-      @componentName = props.componentName
-      @appname = 'nanocyte-component-' + @componentName
+      @generatorName = props.generatorName
+      @appname = 'generator-' + @generatorName
       done()
 
   userInfo: ->
