@@ -1,6 +1,14 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.11'
+deploy:
+  provider: npm
+  email: serveradmin@octoblu.com
+  api_key:
+    secure: h55tJKfJsI1wId30Lrf/1fC06lQA19y+mEcFi5WhnAXSvf9cW+n6A3t3+tL7U5yKWxnrCAmS3O/aGL0ZdxBUlvyBb6RoOOW/CDVuMYj00fzYLTR1SHdOY/ZHNqR6m2wnPJNq4AF2A7fibpUDOgIozAMVMdHDXAgQr03VayfZxG3sMaEuZ5IgyBlGRJ59wvXGViWRU6jEReJpOpjK84/gEr34E7gcT/fLXqOJKtlRxI1xuLbMahYgaEWT4GcPSVZfmopHMsS3RoRi9aDT3FUjPMNnI/y/oJnoGmC3wacvlL9uugBzTXQr0CQEsZhlQL90zTtN1fUsoew6F+3bheKFF1QunxHreIHsAKvqLEHXb0REPBpjcw9KCeYlYtrCEAeZfiwD0T7uOIViyWFMag8SvWryFNPl81LbclTlFdRXnBllMjAJOhQvKnOP1Pwo+LN7ZQzHTqUHsP32toF7ZxGfxmMeQi/u79ZRZmpx1wN9jwg8msUnI1LhgYA97IDSibY/3nY5wisv9NyUgW2rtBZKu0pqUQNyr0pDDF/eSmIFEN8w08/3HlhDGR0cCFC0WurC+/Ffztu99XMssA8sLseweHUWPwAaZUrEOYvu7o35yOWqH25lTJXmk8qVQV8R3VDXkRvKRyUqwwtslvMgfykOgDpEtMi9Kf54p5r2+2kCDRY=
+  on:
+    tags: true
+    branches: true
 before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-nanocyte-component' ]; then cd .. && eval "mv $currentfolder generator-nanocyte-component" && cd generator-nanocyte-component; fi
+- currentfolder=${PWD##*/}
+- if [ "$currentfolder" != 'generator-nanocyte-component' ]; then cd .. && eval "mv $currentfolder generator-nanocyte-component" && cd generator-nanocyte-component; fi
